@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e35aad99-8f45-44d1-8277-a89b6de126d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodemon.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.cert" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +78,7 @@
       <workItem from="1603754795748" duration="6863000" />
       <workItem from="1603819749880" duration="3602000" />
       <workItem from="1603827978362" duration="6994000" />
-      <workItem from="1604248816447" duration="7932000" />
+      <workItem from="1604248816447" duration="10711000" />
     </task>
     <servers />
   </component>
