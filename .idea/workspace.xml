@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e35aad99-8f45-44d1-8277-a89b6de126d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e35aad99-8f45-44d1-8277-a89b6de126d3" name="Default Changelist" comment="Updated security" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,8 +75,16 @@
       <workItem from="1603754795748" duration="6863000" />
       <workItem from="1603819749880" duration="3602000" />
       <workItem from="1603827978362" duration="6994000" />
-      <workItem from="1604248816447" duration="10711000" />
+      <workItem from="1604248816447" duration="11161000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated security">
+      <created>1604268988961</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604268988961</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +104,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Updated security" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated security" />
   </component>
   <component name="WindowStateProjectService">
     <state x="742" y="338" width="1207" height="764" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603470131383">
@@ -109,10 +116,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="177" y="494" width="1004" height="648" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1604259562029" />
-    <state x="657" y="581" width="971" height="320" key="Github.ShareDialog" timestamp="1603828077879">
+    <state x="657" y="581" width="971" height="320" key="Github.ShareDialog" timestamp="1604269234584">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="657" y="581" width="971" height="320" key="Github.ShareDialog/2560.0.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1603828077879" />
+    <state x="657" y="581" width="971" height="320" key="Github.ShareDialog/2560.0.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1604269234584" />
     <state x="500" y="171" key="Github.UntrackedFilesDialog" timestamp="1603828088573">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -137,6 +144,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="206" y="109" width="1946" height="1072" key="SettingsEditor/2560.0.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1604259894179" />
+    <state x="161" y="181" width="1865" height="890" key="Vcs.Push.Dialog.v2" timestamp="1604269204224">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="161" y="181" width="1865" height="890" key="Vcs.Push.Dialog.v2/2560.0.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1604269204224" />
     <state x="597" y="351" width="882" height="989" key="dock-window-1" timestamp="1603470273229">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
