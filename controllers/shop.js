@@ -5,7 +5,8 @@ const path = require("path");
 // the package for pdf generation
 const PDFDocument = require("pdfkit");
 
-const stripe = require('stripe')('');
+// put appropriate stripe key
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 
 

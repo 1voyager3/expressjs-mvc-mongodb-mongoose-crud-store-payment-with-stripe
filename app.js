@@ -1,46 +1,57 @@
-const path = require("path");
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const session = require("express-session");
-const MongoDBStore = require("connect-mongodb-session")(session);
-const errorController = require("./controllers/error");
-const User = require("./models/user");
+const path = require('path');
+const fs = require('fs');
+const https = require('https');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const errorController = require('./controllers/error');
+const User = require('./models/user');
 // the package for csrf attacks
-const csrf = require("csurf");
+const csrf = require('csurf');
 // the package for providing User feedback
-const flash = require("connect-flash");
+const flash = require('connect-flash');
 // multer is a package that parse an incoming request for uploading files;
-const multer = require("multer");
+const multer = require('multer');
+// a package Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
+const helmet = require('helmet');
+// a package for asset compression
+const compression = require('compression');
+//morgan is a middleware that allows us to easily log requests, errors, and more
+const morgan = require('morgan');
 
 const MONGODB_URI =
     // put appropriate mongodb url
-    "";
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.7bstu.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
 
 const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URI,
-  collection: "sessions"
+  collection: 'sessions'
 });
+
+// const privateKey = fs.readFileSync('server.key');
+// const certificate = fs.readFileSync('server.cert');
 
 const csrfProtection = csrf();
 
 // diskStorage() is a storage engine
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, 'images');
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + "-" + file.originalname);
+    cb(null, new Date().toISOString() + '-' + file.originalname);
   }
 });
 
 const fileFilter = (req, file, cb) => {
 
   if (
-      file.mimetype === "image/png" ||
-      file.mimetype === "image/jpg" ||
-      file.mimetype === "image/jpeg"
+      file.mimetype === 'image/png' ||
+      file.mimetype === 'image/jpg' ||
+      file.mimetype === 'image/jpeg'
   ) {
     cb(null, true);
   }
@@ -48,12 +59,24 @@ const fileFilter = (req, file, cb) => {
   cb(null, false);
 };
 
-app.set("view engine", "ejs");
-app.set("views", "views");
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-const adminRoutes = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
-const authRoutes = require("./routes/auth");
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+const authRoutes = require('./routes/auth');
+
+const accessLogStream = fs.createWriteStream(
+    path.join(__dirname, 'access.log'),
+    { flags: 'a' }
+);
+
+// initializing helmet package
+app.use(helmet());
+// initializing compression package
+app.use(compression());
+// initializing morgan package
+app.use(morgan('combined', { stream: accessLogStream }));
 
 // urlencoded is a text data, string
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -62,17 +85,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // single() means to be expected one file
 // 'image' is input named 'image'
 app.use(multer({ storage: fileStorage, fileFilter: fileFilter })
-    .single("image"));
+    .single('image'));
 
 // statically serving a folder means that requests to files in that folder
 // will be handled automatically and the files will be returned.
 // It does behind the scene by expressjs
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(
     session({
-      secret: "my secret",
+      secret: 'my secret',
       resave: false,
       saveUninitialized: false,
       store: store
@@ -121,11 +144,11 @@ app.use((req, res, next) => {
       });
 });
 
-app.use("/admin", adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 
-app.use("/500", errorController.get500);
+app.use('/500', errorController.get500);
 
 app.use(errorController.get404);
 
@@ -137,9 +160,9 @@ app.use((error, req, res, next) => {
   // res.redirect("/500");
 
   res.status(500)
-      .render("500", {
-        pageTitle: "Error",
-        path: "/500",
+      .render('500', {
+        pageTitle: 'Error',
+        path: '/500',
         isAuthenticated: req.session.isLoggedIn
       });
 
@@ -149,9 +172,23 @@ mongoose
     .connect(MONGODB_URI)
     .then(result => {
 
-      console.log("MONGODB Connected!");
+      console.log('MONGODB Connected!');
 
-      app.listen(3000);
+      // manual SSL/TLS initialization
+      /*
+      https
+          .createServer({
+                key: privateKey,
+                cert: certificate
+              },
+              app
+          )
+          .listen(process.env.PORT || 3000);
+
+       */
+
+      app.listen(process.env.PORT || 3000);
+
     })
     .catch(err => {
       console.log(err);
